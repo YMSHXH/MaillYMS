@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background_login"
+    tools:context=".activity.RegActivity">
+
+    <EditText
+        android:id="@+id/rphone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="手机号"
+        android:textSize="18sp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/yan"/>
+
+    <EditText
+        android:id="@+id/yan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="验证码"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rphone"
+        app:layout_constraintBottom_toTopOf="@+id/rpwd"/>
+
+    <EditText
+        android:id="@+id/rpwd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="登录密码"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yan" />
+
+    <TextView
+        android:id="@+id/tv_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="20dp"
+        android:text="已有账号?立即登录"
+        app:layout_constraintTop_toBottomOf="@+id/rpwd"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_reg"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:background="#FFFFFF"
+        android:textColor="#FF5F71"
+        android:text="注册"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="120dp"/>
+
+    <TextView
+        android:id="@+id/get_yan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:text="获取验证码"
+        app:layout_constraintTop_toTopOf="@+id/yan"
+        app:layout_constraintBottom_toBottomOf="@+id/yan"
+        app:layout_constraintRight_toRightOf="@id/yan"/>
+
+</android.support.constraint.ConstraintLayout>
