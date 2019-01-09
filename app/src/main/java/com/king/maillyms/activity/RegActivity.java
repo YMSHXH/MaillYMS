@@ -38,6 +38,7 @@ public class RegActivity extends BaseMvpActivity<RegContact.IRegModel,RegContact
 
     @Override
     protected void initView() {
+        getSupportActionBar().hide();
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
