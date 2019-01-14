@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <com.king.maillyms.myview.SearchView
-        android:id="@+id/serach"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        android:id="@+id/_serach"
+        android:layout_width="match_parent"
+        android:layout_height="85dp">
 
     </com.king.maillyms.myview.SearchView>
 
-</android.support.constraint.ConstraintLayout>
+    <!--<com.stx.xhb.xbanner.XBanner-->
+        <!--android:id="@+id/_xbanner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="85dp"-->
+        <!--app:pageChangeDuration="800">-->
+
+    <!--</com.stx.xhb.xbanner.XBanner>-->
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="85dp">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+
+</RelativeLayout>

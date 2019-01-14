@@ -97,7 +97,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContact.ILoginModel,Logi
     private void isToOne() {
         String isOne = ShapedP.getmInstance().getSP("isOne");
         if (isOne.equals("one")){
-            toIntent(MainActivity.class);
+            toIntent(ProductActivity.class);
             finish();
         }
     }
@@ -137,9 +137,11 @@ public class LoginActivity extends BaseMvpActivity<LoginContact.ILoginModel,Logi
     public void onSeccess(String meg) {
         LoginBean loginBean = new Gson().fromJson(meg, LoginBean.class);
         if ("登录成功".equals(loginBean.getMessage())){
-            toIntent(MainActivity.class);
+            toIntent(ProductActivity.class);
             ShapedP.getmInstance().putSP("phone",ed_phone.getText().toString());
             ShapedP.getmInstance().putSP("pwd",ed_pwd.getText().toString());
+            ShapedP.getmInstance().putSP("userId",loginBean.getResult().getUserId());
+            ShapedP.getmInstance().putSP("sessionId",loginBean.getResult().getSessionId());
             finish();
         }
         //toToast(meg);
@@ -166,7 +168,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContact.ILoginModel,Logi
 
         if (umShareAPI != null) {
             toToast("正在使用QQ登录");
-            umShareAPI.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.QZONE, new UMAuthListener() {
+            umShareAPI.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.QQ, new UMAuthListener() {
                 @Override
                 public void onStart(SHARE_MEDIA share_media) {
                     Log.e("onStart=======","onStart");
