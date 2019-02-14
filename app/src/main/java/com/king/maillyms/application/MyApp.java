@@ -3,6 +3,7 @@ package com.king.maillyms.application;
 import android.content.Context;
 
 import com.example.lib_core.base.BaseApp;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.king.maillyms.apis.Umeng;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
@@ -15,8 +16,8 @@ public class MyApp extends BaseApp {
         super.onCreate();
         context = this;
         //初始化Uming
+        Fresco.initialize(this);
         initUMing();
-
         ZXingLibrary.initDisplayOpinion(this);
     }
 

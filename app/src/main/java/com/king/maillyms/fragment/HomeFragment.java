@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
 import com.king.maillyms.activity.AmapActivity;
+import com.king.maillyms.activity.SearchActivity;
 import com.king.maillyms.adapter.HomeAdapter;
 import com.king.maillyms.beans.BannerBean;
 import com.king.maillyms.beans.ProductBean;
@@ -29,6 +30,8 @@ import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,18 +88,17 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
 
         if ("0000".equals(productBean.getStatus())){
 //            Toast.makeText(getActivity(),productBean.getMessage(),Toast.LENGTH_SHORT).show();
-            if (homeAdapter==null){
+            //if (homeAdapter==null){
                 resultBean = productBean.getResult();
                 //Toast.makeText(getActivity(),"b"+list.size(),Toast.LENGTH_SHORT).show();
                 homeAdapter = new HomeAdapter(getActivity(),resultBean,list);
                 recyclerView.setAdapter(homeAdapter);
                 //Toast.makeText(getActivity(),resultBean.getRxxp().size()+"1",Toast.LENGTH_SHORT).show();
-            }else{
-                resultBean = productBean.getResult();
-                //Toast.makeText(getActivity(),resultBean.getRxxp().size()+"2",Toast.LENGTH_SHORT).show();
-                homeAdapter.setResult(resultBean);
-            }
-
+//            }else{
+//                resultBean = productBean.getResult();
+//                //Toast.makeText(getActivity(),resultBean.getRxxp().size()+"2",Toast.LENGTH_SHORT).show();
+//                homeAdapter.setResult(resultBean);
+//            }
 
         }
 
@@ -115,21 +117,10 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
         if ("0000".equals(status)){
             //Toast.makeText(getActivity(),status,Toast.LENGTH_SHORT).show();
             list = bannerBean.getResult();
-
-            //Toast.makeText(getActivity(),list.size()+"a",Toast.LENGTH_SHORT).show();
-
             xbanner.setData(list,null);
             xbanner.setIsClipChildrenMode(true);
             //xbanner.setScrollBarSize();
-//            xbanner.loadImage(new XBanner.XBannerAdapter() {
-//                @Override
-//                public void loadBanner(XBanner banner, Object model, View view, int position) {
-//                    Glide.with(getActivity())
-//                            .load(list.get(position).getImageUrl())
-//                            .into((ImageView) view);
-//                }
-//            });
-            xbanner.setmAdapter(new XBanner.XBannerAdapter() {
+            xbanner.loadImage(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
                     Glide.with(getActivity())
@@ -195,6 +186,16 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
     public void setTwoma(View v) {
         Intent intent = new Intent(getActivity(),CaptureActivity.class);
         startActivityForResult(intent,201);
+    }
+
+    @Override
+    public void setBtn_searc(String goods_name) {
+        if (goods_name != null && !"".equals(goods_name)) {
+            EventBus.getDefault().postSticky(goods_name);
+            startActivity(new Intent(getActivity(),SearchActivity.class));
+        } else {
+            Toast.makeText(getActivity(), "输入商品信息为空,请重新输入", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

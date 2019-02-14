@@ -62,6 +62,17 @@ dependencies {
 
     //xrecyclerview
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+
+    //Fresco
+    implementation 'com.facebook.fresco:fresco:1.12.1'
 }
 
 configurations.all {

@@ -16,8 +16,4 @@ public class LoginModel implements LoginContact.ILoginModel {
         OkhttpUtils.getInstance().doPost(LoginApis.LOGIN_API,parmas,requestCallback);
     }
 
-//    @Override
-//    public void setLoginList(String api, HashMap<String, String> parmas, OkhttpCallback requestCallback) {
-//        OkhttpUtils.getInstance().doPost(api,parmas,requestCallback);
-//    }
 }

@@ -34,14 +34,6 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
         this.list = list;
     }
 
-    public void setResult(ProductBean.ResultBean result) {
-        if (result != null) {
-            this.result = result;
-            System.out.println("result:");
-        }
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
     public HomeAdapterVH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

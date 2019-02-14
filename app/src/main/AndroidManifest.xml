@@ -96,7 +96,9 @@
         <activity
             android:name=".activity.ProductActivity"
             android:label="@string/title_activity_product" />
-        <activity android:name=".activity.GoodsDetailsActivity"></activity>
+        <activity android:name=".activity.GoodsDetailsActivity" />
+        <activity android:name=".activity.MyDataActivity" />
+        <activity android:name=".activity.SearchActivity"></activity>
     </application>
 
 </manifest>
