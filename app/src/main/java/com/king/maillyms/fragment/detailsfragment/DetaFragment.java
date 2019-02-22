@@ -41,9 +41,16 @@ public class DetaFragment extends BaseMvpFragment<GoodsDetailsContact.IGoodsDeta
         result = new GoodsDetails.ResultBean();
     }
 
+//    @Override
+//    protected void initData() {
+//        super.initData();
+//
+//
+//
+//    }
+
     @Override
-    protected void initData() {
-        super.initData();
+    protected void init() {
         Intent intent = getActivity().getIntent();
         String commodityId = intent.getStringExtra("commodityId");
 
@@ -52,8 +59,6 @@ public class DetaFragment extends BaseMvpFragment<GoodsDetailsContact.IGoodsDeta
         param.put("userId",ShapedP.getmInstance().getSP("userId"));
         param.put("sessionId",ShapedP.getmInstance().getSP("sessionId"));
         presenter.setGoodsDetailsData(param);
-
-
     }
 
     @Override

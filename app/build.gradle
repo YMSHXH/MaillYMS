@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion 28
@@ -10,6 +11,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //
+        multiDexEnabled true
 
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
@@ -35,10 +39,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':lib_core')
+
+    implementation 'com.android.support:multidex:1.0.3'
+
     implementation 'com.google.code.gson:gson:2.8.5'
     //黄油刀
-    implementation 'com.jakewharton:butterknife:8.7.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+//    implementation 'com.jakewharton:butterknife:8.7.0'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //recycler
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:23.4.0'
@@ -70,9 +80,15 @@ dependencies {
     //EventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
 
-
     //Fresco
     implementation 'com.facebook.fresco:fresco:1.12.1'
+
+    //greendao
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
 }
 
 configurations.all {
@@ -84,4 +100,11 @@ configurations.all {
             }
         }
     }
+}
+
+greendao {
+    schemaVersion 1 //数据库版本号
+    daoPackage 'com.king.maillyms.greendao'
+// 设置DaoMaster、DaoSession、Dao 包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
 }

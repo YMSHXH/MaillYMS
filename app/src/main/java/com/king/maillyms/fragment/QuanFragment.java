@@ -14,7 +14,6 @@ public class QuanFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
 
-
     }
 
     @Override

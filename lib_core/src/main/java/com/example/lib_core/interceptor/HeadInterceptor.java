@@ -1,5 +1,9 @@
 package com.example.lib_core.interceptor;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.lib_core.base.BaseApp;
 import com.example.lib_core.utils.ShapedP;
 
 import java.io.IOException;

@@ -72,13 +72,11 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
     }
 
     @Override
-    protected void initData() {
-        super.initData();
+    protected void init() {
         HashMap<String, String> param = null;
 
         presenter.setBannerList(param);
         presenter.setProductList(param);
-
     }
 
     @Override

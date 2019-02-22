@@ -1,6 +1,7 @@
 package com.king.maillyms.application;
 
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.example.lib_core.base.BaseApp;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -14,6 +15,10 @@ public class MyApp extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // 主要是添加下面这句代码
+        MultiDex.install(this);
+
         context = this;
         //初始化Uming
         Fresco.initialize(this);

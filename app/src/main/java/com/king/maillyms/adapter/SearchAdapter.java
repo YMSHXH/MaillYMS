@@ -20,6 +20,11 @@ public class SearchAdapter extends XRecyclerView.Adapter<SearchAdapter.SearchVh>
 
     private Context context;
     private List<SearchBean.ResultBean> list;
+    private SearchCallBack searchCallBack;
+
+    public void setSearchCallBack(SearchCallBack searchCallBack) {
+        this.searchCallBack = searchCallBack;
+    }
 
     public SearchAdapter(Context context, List<SearchBean.ResultBean> list) {
         this.context = context;
@@ -37,12 +42,19 @@ public class SearchAdapter extends XRecyclerView.Adapter<SearchAdapter.SearchVh>
 
     @Override
     public void onBindViewHolder(@NonNull SearchVh searchVh, int i) {
-        SearchBean.ResultBean resultBean = list.get(i);
+        final SearchBean.ResultBean resultBean = list.get(i);
         Uri uri = Uri.parse(resultBean.getMasterPic());
         searchVh.ser_img.setImageURI(uri);
         searchVh.ser_title.setText(resultBean.getCommodityName());
         searchVh.ser_price.setText("￥:"+resultBean.getPrice());
         searchVh.ser_sum.setText("有售"+resultBean.getSaleNum()+"件");
+
+        searchVh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchCallBack.setOnClickListener(resultBean.getCommodityId());
+            }
+        });
     }
 
     @Override
@@ -61,5 +73,9 @@ public class SearchAdapter extends XRecyclerView.Adapter<SearchAdapter.SearchVh>
             ser_price = itemView.findViewById(R.id.ser_price);
             ser_sum = itemView.findViewById(R.id.ser_sum);
         }
+    }
+
+    public interface SearchCallBack{
+        void setOnClickListener(String s);
     }
 }

@@ -20,9 +20,11 @@ public abstract class BaseMvpFragment<M extends IBaseModel,P extends BasePresent
                 presenter.attach(modle,this);
             }
         }
+        init();
 
     }
 
+    protected abstract void init();
     @Override
     public void onDestroy() {
         super.onDestroy();

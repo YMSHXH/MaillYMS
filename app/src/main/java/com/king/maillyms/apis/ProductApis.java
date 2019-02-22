@@ -10,6 +10,16 @@ public class ProductApis {
     //搜索
     public static final String GOODS_SEARCH = "small/commodity/v1/findCommodityByKeyword";
 
+    /**
+     * 查询购物车
+     */
+    public static final String SHOPPING_SEARCH = "small/order/verify/v1/findShoppingCart";
+    public static final String ADD_SHOPPING_SEARCH = "small/order/verify/v1/syncShoppingCart";
 
 
+
+    /**
+     * 圈子
+     */
+    public static final String QUAN_SEARCH = "small/circle/v1/findCircleList";
 }

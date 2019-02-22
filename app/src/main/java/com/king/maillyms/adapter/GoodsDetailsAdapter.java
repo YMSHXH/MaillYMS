@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +45,8 @@ public class GoodsDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         for (int j = 0; j < split.length; j ++ ){
             list.add(split[j]);
         }
+        //加载本地网页
+        ((ImageVH)viewHolder).webV.loadData(result.getDetails(),"text/html; charset=UTF-8", null);
 
         ((ImageVH)viewHolder).image_banner.setData(list,null);
 
@@ -66,12 +69,14 @@ public class GoodsDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     class ImageVH extends RecyclerView.ViewHolder{
         XBanner image_banner;
+        WebView webV;
         TextView details_price,details_name;
         public ImageVH(@NonNull View itemView) {
             super(itemView);
             image_banner = itemView.findViewById(R.id.image_banner);
             details_price = itemView.findViewById(R.id.details_price);
             details_name = itemView.findViewById(R.id.details_name);
+            webV = itemView.findViewById(R.id.webV);
 
         }
     }

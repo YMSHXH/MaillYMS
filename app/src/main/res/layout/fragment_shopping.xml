@@ -20,13 +20,26 @@
         android:id="@+id/ckb_quan"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="￥：0"
+        android:text="全选"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/xrecyView"/>
 
     <TextView
+        android:id="@+id/ckb_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="合计 ￥：0"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toRightOf="@+id/ckb_quan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xrecyView"/>
+
+    <TextView
+        android:id="@+id/go_pay"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:textSize="20dp"

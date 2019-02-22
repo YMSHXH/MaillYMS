@@ -98,9 +98,9 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
     }
 
 
+
     @Override
-    protected void initData() {
-        super.initData();
+    protected void init() {
         presenter.setFindList(null);
     }
 
