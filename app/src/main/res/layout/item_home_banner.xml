@@ -4,21 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<com.stx.xhb.xbanner.XBanner-->
-        <!--android:id="@+id/xbanner"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="200dp"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent">-->
-
-    <!--</com.stx.xhb.xbanner.XBanner>-->
     <com.stx.xhb.xbanner.XBanner
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/xbanner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         app:AutoPlayTime="3000"
         app:pointsContainerBackground="#44aaaaaa"
         app:pointsPosition="RIGHT"

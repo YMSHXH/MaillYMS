@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
 import com.king.maillyms.activity.AmapActivity;
+import com.king.maillyms.activity.HomeProducetClsActivity;
+import com.king.maillyms.activity.ProductActivity;
 import com.king.maillyms.activity.SearchActivity;
 import com.king.maillyms.adapter.HomeAdapter;
 import com.king.maillyms.beans.BannerBean;
@@ -38,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,ProductContact.IProductPresenter>
-        implements ProductContact.IProductView,SearchView.SearchViewCallBack {
+        implements ProductContact.IProductView,SearchView.SearchViewCallBack,HomeAdapter.HomeCallBack  {
 
 
     private HomeAdapter homeAdapter;
@@ -89,8 +91,10 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
             //if (homeAdapter==null){
                 resultBean = productBean.getResult();
                 //Toast.makeText(getActivity(),"b"+list.size(),Toast.LENGTH_SHORT).show();
-                homeAdapter = new HomeAdapter(getActivity(),resultBean,list);
+                homeAdapter = new HomeAdapter(getActivity(),resultBean);
                 recyclerView.setAdapter(homeAdapter);
+
+            homeAdapter.setHomeCallBack(this);
 
         }
 
@@ -200,5 +204,14 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
     public void onStop() {
         super.onStop();
         xbanner.stopAutoPlay();
+    }
+
+    @Override
+    public void setOnClickReListener(String s) {
+//        Intent intent2 = new Intent(getActivity(),ProductActivity.class);
+//        intent2.putExtra("Id",s);
+//        startActivity(intent2);
+        EventBus.getDefault().postSticky(s);
+        startActivity(new Intent(getActivity(),HomeProducetClsActivity.class));
     }
 }

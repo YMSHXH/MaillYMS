@@ -9,14 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
 import com.king.maillyms.activity.GoodsDetailsActivity;
+import com.king.maillyms.activity.HomeProducetClsActivity;
+import com.king.maillyms.activity.ProductActivity;
 import com.king.maillyms.beans.BannerBean;
 import com.king.maillyms.beans.ProductBean;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -25,13 +30,15 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
     private HomeCallBack homeCallBack;
     private Context context;
     private ProductBean.ResultBean result;
-    private List<BannerBean.ResultBean> list;
+
+    public void setHomeCallBack(HomeCallBack homeCallBack){
+        this.homeCallBack = homeCallBack;
+    }
 
 
-    public HomeAdapter(Context context, ProductBean.ResultBean result, List<BannerBean.ResultBean> list) {
+    public HomeAdapter(Context context, ProductBean.ResultBean result) {
         this.context = context;
         this.result = result;
-        this.list = list;
     }
 
     @NonNull
@@ -50,9 +57,19 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
     @Override
     public void onBindViewHolder(@NonNull final HomeAdapterVH homeAdapterVH, int i) {
 
+
+
         if (i == 0) {
-            ProductBean.ResultBean.RxxpBean rxxpBean = result.getRxxp().get(0);
+            final ProductBean.ResultBean.RxxpBean rxxpBean = result.getRxxp().get(0);
             homeAdapterVH._title.setText(rxxpBean.getName());
+            //根据商品列表归属标签查询商品信息
+            homeAdapterVH.home_cls.setImageResource(R.drawable.common_btn_more_yellow);
+            homeAdapterVH.home_cls.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToGoodsClsDetails(rxxpBean.getId());
+                }
+            });
 
             List<ProductBean.ResultBean.RxxpBean.CommodityListBean> commodityList = rxxpBean.getCommodityList();
             //Toast.makeText(context,commodityList.size()+"1",Toast.LENGTH_SHORT).show();
@@ -69,9 +86,17 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
                 }
             });
         } else if (i == 1){
-            ProductBean.ResultBean.MlssBean mlssBean = result.getMlss().get(0);
+            final ProductBean.ResultBean.MlssBean mlssBean = result.getMlss().get(0);
             homeAdapterVH._title.setText(mlssBean.getName());
             homeAdapterVH._title.setBackgroundResource(R.drawable.bitmap);
+            //根据商品列表归属标签查询商品信息
+            homeAdapterVH.home_cls.setImageResource(R.drawable.home_btn_more_purple);
+            homeAdapterVH.home_cls.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToGoodsClsDetails(mlssBean.getId());
+                }
+            });
             List<ProductBean.ResultBean.MlssBean.CommodityListBeanXX> commodityList = mlssBean.getCommodityList();
             homeAdapterVH.item_recy.setLayoutManager(new LinearLayoutManager(context));
             HomeTwoAdapter homeTwoAdapter = new HomeTwoAdapter(context,commodityList,1);
@@ -84,9 +109,18 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
             });
 
         } else if (i == 2){
-            ProductBean.ResultBean.PzshBean pzshBean = result.getPzsh().get(0);
+            final ProductBean.ResultBean.PzshBean pzshBean = result.getPzsh().get(0);
             homeAdapterVH._title.setText(pzshBean.getName());
             homeAdapterVH._title.setBackgroundResource(R.drawable.bitmap_p);
+            //根据商品列表归属标签查询商品信息
+            homeAdapterVH.home_cls.setImageResource(R.drawable.home_btn_moer_pink);
+            homeAdapterVH.home_cls.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToGoodsClsDetails(pzshBean.getId());
+                }
+            });
+
             List<ProductBean.ResultBean.PzshBean.CommodityListBeanX> commodityList = pzshBean.getCommodityList();
             homeAdapterVH.item_recy.setLayoutManager(new GridLayoutManager(context,2));
             HomeThreeAdapter homeThreeAdapter = new HomeThreeAdapter(context,commodityList,2);
@@ -100,6 +134,14 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
                 }
             });
         }
+    }
+
+    /**
+     * 根据商品列表归属标签查询商品信息
+     * @param id
+     */
+    private void goToGoodsClsDetails(String id) {
+        homeCallBack.setOnClickReListener(id);
     }
 
     /**
@@ -121,21 +163,20 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
     class HomeAdapterVH extends XRecyclerView.ViewHolder {
         TextView _title;
         RecyclerView item_recy;
+        ImageView home_cls;
 
         public HomeAdapterVH(@NonNull View itemView) {
             super(itemView);
 
                 _title = itemView.findViewById(R.id.textView);
+                home_cls = itemView.findViewById(R.id.home_cls);
                 item_recy = itemView.findViewById(R.id.item_recy);
 
         }
     }
 
-    public void setHomeCallBack(HomeCallBack homeCallBack){
-        this.homeCallBack = homeCallBack;
-    }
 
-    interface HomeCallBack{
+    public interface HomeCallBack{
         void setOnClickReListener(String s);
     }
 }

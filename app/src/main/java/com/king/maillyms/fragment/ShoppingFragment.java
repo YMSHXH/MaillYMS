@@ -100,7 +100,7 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
 
     @Override
     public void onSuccess(List<ShoppingCarBean> list) {
-        Toast.makeText(getActivity(), list.size() + "", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), list.size() + "", Toast.LENGTH_SHORT).show();
         splist = list;
         //添加数据
         shoppingCarAdapter.setList(list);

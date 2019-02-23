@@ -36,17 +36,6 @@ public class SearchActivity extends BaseMvpActivity<SearchContact.ISearchMoudel,
     String goods_name = null;
     private XRecyclerView xre_search;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_search);
-//        EventBus.getDefault().register(this);
-//        getSupportActionBar().hide();
-//        setFullScreenEnable(true);
-//        initView();
-//    }
-
-
     @Override
     protected void initView() {
         EventBus.getDefault().register(this);

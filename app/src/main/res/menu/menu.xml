@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/toolbar_search"
+        android:title="搜索"
+        app:actionLayout="@layout/layout_menu_search"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+    <!--<item-->
+        <!--android:id="@+id/action_notifications"-->
+        <!--android:icon="@drawable/ic_delete_white"-->
+        <!--android:title="notifications"-->
+        <!--app:showAsAction="ifRoom" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:icon="@mipmap/ic_launcher"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="搜索商品"-->
+        <!--app:showAsAction="never" />-->
+</menu>
