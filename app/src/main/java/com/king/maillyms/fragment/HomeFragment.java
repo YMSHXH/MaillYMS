@@ -91,12 +91,6 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
                 //Toast.makeText(getActivity(),"b"+list.size(),Toast.LENGTH_SHORT).show();
                 homeAdapter = new HomeAdapter(getActivity(),resultBean,list);
                 recyclerView.setAdapter(homeAdapter);
-                //Toast.makeText(getActivity(),resultBean.getRxxp().size()+"1",Toast.LENGTH_SHORT).show();
-//            }else{
-//                resultBean = productBean.getResult();
-//                //Toast.makeText(getActivity(),resultBean.getRxxp().size()+"2",Toast.LENGTH_SHORT).show();
-//                homeAdapter.setResult(resultBean);
-//            }
 
         }
 

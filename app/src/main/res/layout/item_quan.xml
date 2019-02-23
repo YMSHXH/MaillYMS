@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    android:layout_margin="12dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/head_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:placeholderImage="@mipmap/ic_launcher"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/quan_actr"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/quan_title"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="昵称"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/quan_actr"
+            app:layout_constraintLeft_toRightOf="@+id/head_img"/>
+
+
+        <TextView
+            android:id="@+id/quan_actr"
+            android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/head_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/quan_img1"
+            android:text="adfdgga"
+            android:layout_height="50dp"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/quan_img1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:viewAspectRatio="1.5"
+            app:layout_constraintTop_toBottomOf="@+id/quan_actr"
+            app:placeholderImage="@mipmap/ic_launcher"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+</android.support.v7.widget.CardView>

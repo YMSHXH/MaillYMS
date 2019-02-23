@@ -32,6 +32,23 @@
     </android.support.v4.view.ViewPager>
 
 
+    <ImageView
+        android:id="@+id/add_car"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:src="@drawable/common_btn_add"
+        app:layout_constraintBottom_toTopOf="@+id/add_buy"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+    <ImageView
+        android:id="@+id/add_buy"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:src="@drawable/common_btn_buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="100dp"/>
 
 
 

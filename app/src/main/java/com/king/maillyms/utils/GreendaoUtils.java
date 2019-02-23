@@ -37,8 +37,8 @@ public class GreendaoUtils {
     /**
      * 初始化GreenDao,直接在Application中进行初始化操作
      */
-    public void initGreenDao(Context context){
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(context, Constants.GOODS_DB);
+    public void initGreenDao(Context context,String constantsName){
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(context, constantsName);
         //获取数据库
         SQLiteDatabase db = devOpenHelper.getWritableDatabase();
         //创建对象

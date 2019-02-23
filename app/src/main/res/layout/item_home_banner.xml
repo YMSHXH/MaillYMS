@@ -18,7 +18,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/xbanner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         app:AutoPlayTime="3000"
         app:pointsContainerBackground="#44aaaaaa"
         app:pointsPosition="RIGHT"

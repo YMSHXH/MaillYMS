@@ -71,6 +71,7 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
                 shoppingCarAdapter.notifyDataSetChanged();
             }
         });
+
     }
 
     /**
@@ -101,14 +102,8 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
     public void onSuccess(List<ShoppingCarBean> list) {
         Toast.makeText(getActivity(), list.size() + "", Toast.LENGTH_SHORT).show();
         splist = list;
-//        ShoppingCarBean shoppingCarBean = new ShoppingCarBean("5","双头两用修容笔",
-//                "3","http://172.17.8.100/images/small/commodity/mzhf/cz/3/1.jpg","39");
-//        ShoppingCarBean shoppingCarBean2 = new ShoppingCarBean("6","轻柔系自然裸妆假睫毛",
-//                "4","http://172.17.8.100/images/small/commodity/mzhf/cz/4/1.jpg","39");
-//        splist.add(shoppingCarBean);
-//        splist.add(shoppingCarBean2);
         //添加数据
-        shoppingCarAdapter.setList(splist);
+        shoppingCarAdapter.setList(list);
 
     }
 
