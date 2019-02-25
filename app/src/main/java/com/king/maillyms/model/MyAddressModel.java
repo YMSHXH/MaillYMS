@@ -47,6 +47,7 @@ public class MyAddressModel implements MyAddressContact.IMyAddressMoudel {
                         Log.e("throwable",throwable + "");
                     }
                 });
+        //限定符
     }
 
     public interface MyAddressModelCallBack{

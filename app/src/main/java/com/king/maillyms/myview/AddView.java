@@ -20,7 +20,7 @@ public class AddView extends ConstraintLayout {
     @BindView(R.id.minus)
     TextView minus;
     @BindView(R.id.et_num)
-    EditText etNum;
+    TextView etNum;
     @BindView(R.id.add)
     TextView add;
 
