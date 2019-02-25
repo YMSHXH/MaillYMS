@@ -17,17 +17,17 @@ public class DanFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        Button gaode = view.findViewById(R.id.gaode);
-
-        gaode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"gaode",Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(),AmapActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button gaode = view.findViewById(R.id.gaode);//
+//        gaode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(),"gaode",Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(getActivity(),AmapActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        
     }
 
     @Override

@@ -18,8 +18,6 @@ public class ProductApis {
     public static final String PRODUCT_CLS = "small/commodity/v1/findCommodityListByLabel";
 
 
-
-
     /**
      * 查询购物车
      */
@@ -31,4 +29,10 @@ public class ProductApis {
      * 圈子
      */
     public static final String QUAN_SEARCH = "small/circle/v1/findCircleList";
+
+
+    /**
+     * 我的收获地址列表
+     */
+    public static final String MY_ADDRESS = "small/user/verify/v1/receiveAddressList";
 }

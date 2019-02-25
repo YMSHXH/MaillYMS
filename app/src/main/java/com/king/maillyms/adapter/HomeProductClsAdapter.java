@@ -22,10 +22,10 @@ public class HomeProductClsAdapter extends XRecyclerView.Adapter<HomeProductClsA
 
     private Context context;
     private List<ProducetClsBean> list;
-    private SearchCallBack searchCallBack;
+    private HomeProductCls homeProductCls;
 
-    public void setSearchCallBack(SearchCallBack searchCallBack) {
-        this.searchCallBack = searchCallBack;
+    public void setHomeProductCls(HomeProductCls homeProductCls) {
+        this.homeProductCls = homeProductCls;
     }
 
     public HomeProductClsAdapter(Context context) {
@@ -61,7 +61,7 @@ public class HomeProductClsAdapter extends XRecyclerView.Adapter<HomeProductClsA
         searchVh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchCallBack.setOnClickListener(resultBean.getCommodityId());
+                homeProductCls.setOnClickListener(resultBean.getCommodityId());
             }
         });
     }
@@ -84,7 +84,7 @@ public class HomeProductClsAdapter extends XRecyclerView.Adapter<HomeProductClsA
         }
     }
 
-    public interface SearchCallBack{
+    public interface HomeProductCls{
         void setOnClickListener(String s);
     }
 }

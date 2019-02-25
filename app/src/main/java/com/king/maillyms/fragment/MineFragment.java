@@ -13,6 +13,7 @@ import com.example.lib_core.base.mvp.BaseMvpFragment;
 import com.example.lib_core.base.mvp.BasePresenter;
 import com.google.gson.Gson;
 import com.king.maillyms.R;
+import com.king.maillyms.activity.MyAddressActivity;
 import com.king.maillyms.activity.MyDataActivity;
 import com.king.maillyms.beans.FindBean;
 import com.king.maillyms.contact.FindContact;
@@ -89,10 +90,12 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
 
             }
         });
+        //收货地址
         address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(),MyAddressActivity.class);
+                startActivity(intent);
             }
         });
     }

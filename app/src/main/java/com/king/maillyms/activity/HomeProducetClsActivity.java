@@ -1,5 +1,6 @@
 package com.king.maillyms.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -63,6 +64,15 @@ public class HomeProducetClsActivity extends BaseMvpActivity<ProductClsContact.I
         //设置适配器
         homeProductClsAdapter = new HomeProductClsAdapter(this);
         xrecyViewCls.setAdapter(homeProductClsAdapter);
+
+        homeProductClsAdapter.setHomeProductCls(new HomeProductClsAdapter.HomeProductCls() {
+            @Override
+            public void setOnClickListener(String s) {
+                Intent intent = new Intent(HomeProducetClsActivity.this,GoodsDetailsActivity.class);
+                intent.putExtra("commodityId",s);
+                startActivity(intent);
+            }
+        });
 
 //        switch (item.getItemId()) {
 //            case android.R.id.home: //android.R.id.home是Android内置home按钮的id

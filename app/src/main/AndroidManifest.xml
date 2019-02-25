@@ -101,7 +101,8 @@
         <activity android:name=".activity.GoodsDetailsActivity" />
         <activity android:name=".activity.MyDataActivity" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.HomeProducetClsActivity"></activity>
+        <activity android:name=".activity.HomeProducetClsActivity" />
+        <activity android:name=".activity.MyAddressActivity"></activity>
     </application>
 
 </manifest>

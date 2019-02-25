@@ -1,9 +1,15 @@
 package com.king.maillyms.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.lib_core.base.BaseFragment;
 import com.example.lib_core.base.mvp.BaseMvpActivity;
 import com.example.lib_core.base.mvp.BaseMvpFragment;
@@ -19,6 +27,7 @@ import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
 import com.king.maillyms.activity.AmapActivity;
+import com.king.maillyms.activity.GoodsDetailsActivity;
 import com.king.maillyms.activity.HomeProducetClsActivity;
 import com.king.maillyms.activity.ProductActivity;
 import com.king.maillyms.activity.SearchActivity;
@@ -50,6 +59,7 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
     private List<BannerBean.ResultBean> list;
     private XBanner xbanner;
     private View headview;
+    private double width_height = 2;//宽高比
 
     @Override
     protected int getResLayoutById() {
@@ -106,24 +116,63 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
 
     }
 
+    /**
+     * 追加
+     * @param s
+     */
     @Override
     public void onBannerSeccess(String s) {
         BannerBean bannerBean = new Gson().fromJson(s, BannerBean.class);
         String status = bannerBean.getStatus();
         if ("0000".equals(status)){
-            //Toast.makeText(getActivity(),status,Toast.LENGTH_SHORT).show();
+
+
+
             list = bannerBean.getResult();
             xbanner.setData(list,null);
             xbanner.setIsClipChildrenMode(true);
             //xbanner.setScrollBarSize();
+            Glide.with(getActivity())
+                    .asBitmap()
+                    .load(list.get(0).getImageUrl())
+                    .into(new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                            //获取xbanner的宽度
+                            double width = xbanner.getWidth();
+                            double imagewidth = resource.getWidth();
+                            double imageheight = resource.getHeight();
+                            width_height = imagewidth / imageheight;
+                            Log.e("宽高比",width_height + "");
+                            //获取高度
+                            double height = width / width_height;
+                            //设置banner 的高度
+                            xbanner.setLayoutParams(new ConstraintLayout.LayoutParams((int)width,(int)height));
+                        }
+                    });
             xbanner.loadImage(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
                     Glide.with(getActivity())
+                            .asBitmap()
                             .load(list.get(position).getImageUrl())
                             .into((ImageView) view);
+
                 }
             });
+
+            //设置xbanner跳转详情页面 没有ID 无法查看 后台数据不好
+//            xbanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(XBanner banner, Object model, View view, int position) {
+//                    Intent intent = new Intent(getActivity(),GoodsDetailsActivity.class);
+//                    intent.putExtra("commodityId",list.get(position));
+//                    startActivity(intent);
+//                }
+//            });
+
+
+
             recyclerView.addHeaderView(headview);
         }
     }
