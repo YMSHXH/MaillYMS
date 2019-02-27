@@ -98,6 +98,13 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
                 startActivity(intent);
             }
         });
+
+        head_image_simile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 

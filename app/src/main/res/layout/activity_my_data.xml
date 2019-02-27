@@ -11,17 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="我的资料"
-        android:textSize="16dp"
+        android:textSize="@dimen/dp_16"
         android:textColor="#666666"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dp_40"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="312dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_138"
+        android:layout_marginTop="@dimen/dp_20"
         android:background="@drawable/critical"
         app:layout_constraintTop_toBottomOf="@+id/mymessage"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,28 +31,28 @@
             android:id="@+id/myhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="@dimen/dp_14"
             android:text="我的头像"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/dp_20"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <ImageView
             android:id="@+id/head_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
             android:src="@mipmap/ic_launcher"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/dp_1"
             android:background="#ededed"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             app:layout_constraintTop_toBottomOf="@+id/head_image"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -61,9 +61,9 @@
             android:id="@+id/myname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="@dimen/dp_14"
             android:text="我的昵称"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/dp_20"
             app:layout_constraintTop_toBottomOf="@+id/myhead"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -72,18 +72,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12312"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             app:layout_constraintTop_toBottomOf="@+id/myhead"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/dp_1"
             android:background="#ededed"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintTop_toBottomOf="@+id/myname"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -92,9 +92,9 @@
             android:id="@+id/mypwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="@dimen/dp_14"
             android:text="我的密码"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/dp_20"
             app:layout_constraintTop_toBottomOf="@+id/myname"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -103,18 +103,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12312"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             app:layout_constraintTop_toBottomOf="@+id/myname"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/dp_1"
             android:background="#ededed"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintTop_toBottomOf="@+id/mypwd"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>

@@ -35,4 +35,10 @@ public class ProductApis {
      * 我的收获地址列表
      */
     public static final String MY_ADDRESS = "small/user/verify/v1/receiveAddressList";
+
+
+    /**
+     * 根据订单状态查询订单信息
+     */
+    public static final String DAN_LIST = "small/order/verify/v1/findOrderListByStatus";
 }

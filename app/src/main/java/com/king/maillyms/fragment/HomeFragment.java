@@ -126,11 +126,10 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
         String status = bannerBean.getStatus();
         if ("0000".equals(status)){
 
-
-
             list = bannerBean.getResult();
             xbanner.setData(list,null);
-            xbanner.setIsClipChildrenMode(true);
+            //开启一屏多显魔蛇
+            //xbanner.setIsClipChildrenMode(true);
             //xbanner.setScrollBarSize();
             Glide.with(getActivity())
                     .asBitmap()
