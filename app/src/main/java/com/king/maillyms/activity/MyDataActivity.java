@@ -79,7 +79,7 @@ public class MyDataActivity extends BaseMvpActivity<HeadImageContact.IHeadImageM
         //判断sd卡是否挂载
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//挂载
             String path = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    +File.separator + "z11.jpg";
+                    +File.separator + "79d949b8g7c203071abf1&690.jpg";
 
             System.out.println("path:====="+path);
             File file = new File(path);
@@ -87,7 +87,8 @@ public class MyDataActivity extends BaseMvpActivity<HeadImageContact.IHeadImageM
                 System.out.println("path:========="+path);
                 //图片请求体
                 RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"),file);
-                MultipartBody.Part filePart = MultipartBody.Part.create(requestBody);
+                MultipartBody.Part filePart = MultipartBody.Part.createFormData("image",
+                        file.getName(),requestBody);
                 presenter.setheadList(params,filePart);
             } else{
                 ToastUtils.showShort("请选择文件");
