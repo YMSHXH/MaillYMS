@@ -28,3 +28,5 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+-dontwarn com.squareup.picasso.**
+-dontwarn com.bumptech.glide.**

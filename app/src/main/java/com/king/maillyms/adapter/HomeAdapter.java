@@ -60,7 +60,7 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
 
 
         if (i == 0) {
-            final ProductBean.ResultBean.RxxpBean rxxpBean = result.getRxxp().get(0);
+            final ProductBean.ResultBean.RxxpBean rxxpBean = result.getRxxp();
             homeAdapterVH._title.setText(rxxpBean.getName());
             //根据商品列表归属标签查询商品信息
             homeAdapterVH.home_cls.setImageResource(R.drawable.common_btn_more_yellow);
@@ -86,7 +86,7 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
                 }
             });
         } else if (i == 1){
-            final ProductBean.ResultBean.MlssBean mlssBean = result.getMlss().get(0);
+            final ProductBean.ResultBean.MlssBean mlssBean = result.getMlss();
             homeAdapterVH._title.setText(mlssBean.getName());
             homeAdapterVH._title.setBackgroundResource(R.drawable.bitmap);
             //根据商品列表归属标签查询商品信息
@@ -109,7 +109,7 @@ public class HomeAdapter extends XRecyclerView.Adapter<HomeAdapter.HomeAdapterVH
             });
 
         } else if (i == 2){
-            final ProductBean.ResultBean.PzshBean pzshBean = result.getPzsh().get(0);
+            final ProductBean.ResultBean.PzshBean pzshBean = result.getPzsh();
             homeAdapterVH._title.setText(pzshBean.getName());
             homeAdapterVH._title.setBackgroundResource(R.drawable.bitmap_p);
             //根据商品列表归属标签查询商品信息

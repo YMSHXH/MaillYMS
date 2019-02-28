@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.lib_core.base.mvp.BaseMvpActivity;
 import com.example.lib_core.base.mvp.BasePresenter;
 import com.example.lib_core.utils.ShapedP;
@@ -136,6 +137,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContact.ILoginModel,Logi
     @Override
     public void onSeccess(String meg) {
         LoginBean loginBean = new Gson().fromJson(meg, LoginBean.class);
+        ToastUtils.showLong(loginBean.getMessage());
         if ("登录成功".equals(loginBean.getMessage())){
             toIntent(ProductActivity.class);
             ShapedP.getmInstance().putSP("phone",ed_phone.getText().toString());

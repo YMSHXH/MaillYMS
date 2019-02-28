@@ -17,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.example.lib_core.base.BaseFragment;
 import com.example.lib_core.base.mvp.BaseMvpActivity;
 import com.example.lib_core.base.mvp.BaseMvpFragment;
@@ -131,12 +131,30 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
             //开启一屏多显魔蛇
             //xbanner.setIsClipChildrenMode(true);
             //xbanner.setScrollBarSize();
+//            Glide.with(getActivity())
+//                    .asBitmap()
+//                    .load(list.get(0).getImageUrl())
+//                    .into(new SimpleTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+//                            //获取xbanner的宽度
+//                            double width = xbanner.getWidth();
+//                            double imagewidth = resource.getWidth();
+//                            double imageheight = resource.getHeight();
+//                            width_height = imagewidth / imageheight;
+//                            Log.e("宽高比",width_height + "");
+//                            //获取高度
+//                            double height = width / width_height;
+//                            //设置banner 的高度
+//                            xbanner.setLayoutParams(new ConstraintLayout.LayoutParams((int)width,(int)height));
+//                        }
+//                    });
             Glide.with(getActivity())
-                    .asBitmap()
                     .load(list.get(0).getImageUrl())
+                    .asBitmap()
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             //获取xbanner的宽度
                             double width = xbanner.getWidth();
                             double imagewidth = resource.getWidth();
@@ -153,7 +171,6 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
                 @Override
                 public void loadBanner(XBanner banner, Object model, View view, int position) {
                     Glide.with(getActivity())
-                            .asBitmap()
                             .load(list.get(position).getImageUrl())
                             .into((ImageView) view);
 

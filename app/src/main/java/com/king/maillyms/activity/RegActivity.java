@@ -61,9 +61,8 @@ public class RegActivity extends BaseMvpActivity<RegContact.IRegModel,RegContact
 
     @Override
     public void onSeccess(String meg) {
-
-        toToast(meg);
         LoginBean loginBean = new Gson().fromJson(meg, LoginBean.class);
+        toToast(loginBean.getMessage());
         if ("注册成功".equals(loginBean.getMessage())){
             Intent intent = new Intent();
             intent.putExtra("phone",ed_phone.getText().toString());

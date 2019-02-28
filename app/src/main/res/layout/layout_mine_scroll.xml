@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.constraint.ConstraintLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+    <com.king.maillyms.myview.HuiDan
+        android:id="@+id/hui"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/head_image_big"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_200"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/mine_cons"
+                android:src="@mipmap/ic_launcher"/>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/mine_cons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mymessage_shape"
+                android:layout_marginTop="@dimen/dp_142"
+                android:paddingTop="@dimen/dp_130"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <ImageView
+                    android:id="@+id/my_icon_information"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_margin="@dimen/dp_24"
+                    android:src="@drawable/my_icon_information"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="#666666"
+                    android:text="个人资料"
+                    android:layout_margin="@dimen/dp_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_information"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/information"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_24"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_information"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/my_icon_circle"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_margin="@dimen/dp_24"
+                    android:src="@drawable/my_icon_circle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_information"/>
+
+                <TextView
+                    android:id="@+id/circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="#666666"
+                    android:text="我的圈子"
+                    android:layout_margin="@dimen/dp_24"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_information"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_circle"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/circle"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_circle"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/my_icon_foot"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_margin="@dimen/dp_24"
+                    android:background="#ededed"
+                    android:src="@drawable/my_icon_foot"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_circle"/>
+
+                <TextView
+                    android:id="@+id/foot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="#666666"
+                    android:text="我的足迹"
+                    android:layout_margin="@dimen/dp_24"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_circle"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_foot"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/foot"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_foot"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/my_icon_wallet"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_margin="@dimen/dp_24"
+                    android:src="@drawable/my_icon_wallet"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_foot"/>
+
+                <TextView
+                    android:id="@+id/wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="#666666"
+                    android:text="我的钱包"
+                    android:layout_margin="@dimen/dp_24"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_foot"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_wallet"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/wallet"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_wallet"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/my_icon_address"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_margin="@dimen/dp_24"
+                    android:src="@drawable/my_icon_address"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_wallet"/>
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="#666666"
+                    android:text="我的收货地址"
+                    android:layout_margin="@dimen/dp_24"
+                    app:layout_constraintTop_toBottomOf="@+id/my_icon_wallet"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_address"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:background="#ededed"
+                    app:layout_constraintTop_toBottomOf="@+id/address"
+                    app:layout_constraintLeft_toRightOf="@+id/my_icon_address"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/head_image_simile"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/name_ni"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/name_ni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="吃不胖的小姐姐"
+                android:layout_marginTop="@dimen/dp_60"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                app:layout_constraintTop_toTopOf="@+id/mine_cons"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+    </com.king.maillyms.myview.HuiDan>
+<!--</android.support.constraint.ConstraintLayout>-->

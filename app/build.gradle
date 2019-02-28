@@ -66,9 +66,9 @@ dependencies {
     api 'com.amap.api:3dmap:latest.integration'
     api 'com.amap.api:location:latest.integration'
 
-    //implementation 'com.github.bumptech.glide:glide:4.8.0'
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    implementation 'com.github.bumptech.glide:glide:4.9.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //implementation 'com.xhb:xbanner:1.5.1'//将latestVersion替换成上面 download 后面的版本号
     implementation 'com.github.xiaohaibin:XBanner:1.6.2'//将latestVersion替换成上面 jitpack 后面的版本号
@@ -95,6 +95,15 @@ dependencies {
 
     //屏幕适配
     //implementation 'me.jessyan:autosize:1.1.2'
+
+    //takephoto
+    //implementation 'com.jph.takephoto:takephoto_library:4.0.3'
+
+    implementation 'com.zhihu.android:matisse:0.4.3'
+    //implementation 'com.zhihu.android:matisse:0.5.0-alpha4'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    implementation "io.reactivex.rxjava2:rxjava:2.1.9"
+
 }
 
 configurations.all {

@@ -20,6 +20,8 @@ import com.king.maillyms.contact.FindContact;
 import com.king.maillyms.presenter.FindPresenter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindContact.IFindPresenter>
         implements FindContact.IFindView {
@@ -42,6 +44,7 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
     @BindView(R.id.address)
     TextView address;
     private FindBean.ResultBean result;
+    private Unbinder bind;
 
     @Override
     protected int getResLayoutById() {
@@ -50,7 +53,7 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
 
     @Override
     protected void initView(View view) {
-
+        bind = ButterKnife.bind(this, view);
         result = new FindBean.ResultBean();
 
         //点击事件

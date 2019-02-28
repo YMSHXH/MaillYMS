@@ -61,9 +61,9 @@ public class GoodsDetailsActivity extends BaseMvpActivity<AddCarContact.IAddCarM
             public Fragment getItem(int i) {
                 switch (i){
                     case 0:
-                        return new GoodsFragment();
-                    case 1:
                         return new DetaFragment();
+                    case 1:
+                        return new GoodsFragment();
                     case 2:
                         return new PingFragment();
                 }
