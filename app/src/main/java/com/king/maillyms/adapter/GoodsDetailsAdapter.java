@@ -1,5 +1,6 @@
 package com.king.maillyms.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.king.maillyms.R;
 import com.king.maillyms.beans.GoodsDetails;
 import com.stx.xhb.xbanner.XBanner;
@@ -18,7 +23,10 @@ import com.stx.xhb.xbanner.XBanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodsDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class GoodsDetailsAdapter extends RecyclerView.Adapter<GoodsDetailsAdapter.GoodsDetailsAdapterVH> {
 
     private Context context;
     private GoodsDetails.ResultBean result;
@@ -30,36 +38,109 @@ public class GoodsDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public GoodsDetailsAdapterVH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.item_home_goods_image, viewGroup, false);
-        ImageVH imageVH = new ImageVH(inflate);
-        return imageVH;
+        GoodsDetailsAdapterVH goodsDetailsAdapterVH = new GoodsDetailsAdapterVH(inflate);
+        return goodsDetailsAdapterVH;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull GoodsDetailsAdapterVH goodsDetailsAdapterVH, int i) {
         String picture = result.getPicture();
         final String[] split = picture.split(",");
         List<String> list = new ArrayList<>();
-
         for (int j = 0; j < split.length; j ++ ){
             list.add(split[j]);
         }
         //加载本地网页
-        ((ImageVH)viewHolder).webV.loadData(result.getDetails(),"text/html; charset=UTF-8", null);
+        goodsDetailsAdapterVH.webV.loadData(result.getDetails(),
+                "text/html; charset=UTF-8",
+                null);
 
-        ((ImageVH)viewHolder).image_banner.setData(list,null);
-
-        ((ImageVH)viewHolder).image_banner.loadImage(new XBanner.XBannerAdapter() {
+        goodsDetailsAdapterVH.imageBanner.setData(list,null);
+        goodsDetailsAdapterVH.imageBanner.loadImage(new XBanner.XBannerAdapter() {
             @Override
             public void loadBanner(XBanner banner, Object model, View view, int position) {
                 Glide.with(context).load(split[position]).into((ImageView) view);
             }
         });
-        ((ImageVH)viewHolder).image_banner.stopAutoPlay();
+        goodsDetailsAdapterVH.imageBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
+            @Override
+            public void onItemClick(XBanner banner, Object model, View view, final int position) {
+                View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_photoview, null, false);
+                final PhotoView photoView = dialogView.findViewById(R.id.photo_view);
+                final ImageView photoFinish = dialogView.findViewById(R.id.photo_finish);
+                final ImageView photoLast = dialogView.findViewById(R.id.photo_last);
+                final ImageView photoNext = dialogView.findViewById(R.id.photo_next);
+                Glide.with(context).load(split[position]).into(new SimpleTarget<GlideDrawable>() {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        photoView.setImageDrawable(resource);
+                    }
+                });
+                photoLast.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (position-1 > 0){
+                            Glide.with(context).load(split[position-1]).into(new SimpleTarget<GlideDrawable>() {
+                                @Override
+                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    photoView.setImageDrawable(resource);
+                                }
+                            });
+                        }else {
+                            Glide.with(context).load(split[split.length-1]).into(new SimpleTarget<GlideDrawable>() {
+                                @Override
+                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    photoView.setImageDrawable(resource);
+                                }
+                            });
+                        }
 
-        ((ImageVH)viewHolder).details_name.setText(result.getCommodityName());
-        ((ImageVH)viewHolder).details_price.setText("￥："+result.getPrice());
+                    }
+                });
+                photoNext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (position+1 < split.length){
+                            Glide.with(context).load(split[position+1]).into(new SimpleTarget<GlideDrawable>() {
+                                @Override
+                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    photoView.setImageDrawable(resource);
+                                }
+                            });
+                        }else {
+                            Glide.with(context).load(split[0]).into(new SimpleTarget<GlideDrawable>() {
+                                @Override
+                                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                    photoView.setImageDrawable(resource);
+                                }
+                            });
+                        }
+                    }
+                });
+                final AlertDialog.Builder builder =new AlertDialog.Builder(context);
+                builder.setView(dialogView)
+                        .setCancelable(true)
+                        .create();
+                final AlertDialog dialog = builder.show();
+
+
+                photoFinish.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
+
+
+
+        goodsDetailsAdapterVH.detailsName.setText(result.getCommodityName());
+        goodsDetailsAdapterVH.detailsPrice.setText("￥："+result.getPrice());
     }
 
     @Override
@@ -67,24 +148,21 @@ public class GoodsDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return 1;
     }
 
-    class ImageVH extends RecyclerView.ViewHolder{
-        XBanner image_banner;
+
+
+    public class GoodsDetailsAdapterVH extends RecyclerView.ViewHolder {
+        @BindView(R.id.image_banner)
+        XBanner imageBanner;
+        @BindView(R.id.details_price)
+        TextView detailsPrice;
+        @BindView(R.id.details_name)
+        TextView detailsName;
+        @BindView(R.id.webV)
         WebView webV;
-        TextView details_price,details_name;
-        public ImageVH(@NonNull View itemView) {
+        public GoodsDetailsAdapterVH(@NonNull View itemView) {
             super(itemView);
-            image_banner = itemView.findViewById(R.id.image_banner);
-            details_price = itemView.findViewById(R.id.details_price);
-            details_name = itemView.findViewById(R.id.details_name);
-            webV = itemView.findViewById(R.id.webV);
-
+            ButterKnife.bind(this, itemView);
         }
     }
 
-    class GoodsVH extends RecyclerView.ViewHolder{
-
-        public GoodsVH(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
 }

@@ -47,6 +47,8 @@ public class DanFragment extends BaseMvpFragment<DanListContact.IDanListModel,Da
     XRecyclerView danRecy;
     Unbinder unbinder;
     private DanAdapter danAdapter;
+    private Map<String, String> paramsBody;
+    private Map<String, String> params;
 
     @Override
     protected int getResLayoutById() {
@@ -77,28 +79,38 @@ public class DanFragment extends BaseMvpFragment<DanListContact.IDanListModel,Da
 
     @Override
     protected void init() {
-        Map<String, String> params = new HashMap<>();
+        params = new HashMap<>();
         params.put("userId", ShapedP.getmInstance().getSP("userId"));
         params.put("sessionId", ShapedP.getmInstance().getSP("sessionId"));
-        Map<String, String> paramsBody = new HashMap<>();
+        paramsBody = new HashMap<>();
         paramsBody.put("status","0");
         paramsBody.put("page","1");
         paramsBody.put("count","10");
-        presenter.setDanList(params,paramsBody);
+        presenter.setDanList(params, paramsBody);
     }
 
     @OnClick({R.id.dan_all_list, R.id.dan_pay, R.id.dan_receive, R.id.dan_comment, R.id.dan_finish})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.dan_all_list:
+                paramsBody.put("status","0");
+                presenter.setDanList(params, paramsBody);
                 break;
             case R.id.dan_pay:
+                paramsBody.put("status","1");
+                presenter.setDanList(params, paramsBody);
                 break;
             case R.id.dan_receive:
+                paramsBody.put("status","2");
+                presenter.setDanList(params, paramsBody);
                 break;
             case R.id.dan_comment:
+                paramsBody.put("status","3");
+                presenter.setDanList(params, paramsBody);
                 break;
             case R.id.dan_finish:
+                paramsBody.put("status","9");
+                presenter.setDanList(params, paramsBody);
                 break;
         }
     }

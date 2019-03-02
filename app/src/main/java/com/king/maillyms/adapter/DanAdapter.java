@@ -1,6 +1,7 @@
 package com.king.maillyms.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.king.maillyms.R;
+import com.king.maillyms.activity.ToPayActivity;
 import com.king.maillyms.beans.DanBean;
 
 import java.util.ArrayList;
@@ -61,6 +63,14 @@ public class DanAdapter extends RecyclerView.Adapter<DanAdapter.DanAdapterVH> {
         DaoGoodsAdapter daoGoodsAdapter = new DaoGoodsAdapter(context,detailList);
         danAdapterVH.danRecyitem.setLayoutManager(new LinearLayoutManager(context));
         danAdapterVH.danRecyitem.setAdapter(daoGoodsAdapter);
+
+        danAdapterVH.btnGotoPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //去支付
+                context.startActivity(new Intent(context,ToPayActivity.class));
+            }
+        });
 
     }
 

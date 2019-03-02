@@ -35,6 +35,8 @@ public class ProductApis {
      * 我的收获地址列表
      */
     public static final String MY_ADDRESS = "small/user/verify/v1/receiveAddressList";
+    public static final String ADD_MY_ADDRESS = "small/user/verify/v1/addReceiveAddress";
+    public static final String UPADTA_MY_ADDRESS = "small/user/verify/v1/changeReceiveAddress";
 
 
     /**

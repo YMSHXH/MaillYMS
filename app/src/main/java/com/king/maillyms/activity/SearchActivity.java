@@ -90,6 +90,10 @@ public class SearchActivity extends BaseMvpActivity<SearchContact.ISearchMoudel,
     }
 
 
+    /**
+     * 沉浸式
+     * @param enable
+     */
     private void setFullScreenEnable(boolean enable) {
         Window window = getWindow();
         WindowManager.LayoutParams params = window.getAttributes();

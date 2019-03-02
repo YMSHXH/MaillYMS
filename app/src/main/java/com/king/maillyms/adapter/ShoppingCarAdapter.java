@@ -81,7 +81,7 @@ public class ShoppingCarAdapter extends RecyclerView.Adapter<ShoppingCarAdapter.
                 notifyDataSetChanged();
                 //调用接口
                 if (shoppingCarAdapterCallBack != null) {
-                    shoppingCarAdapterCallBack.notifySum();
+                    shoppingCarAdapterCallBack.notifyCheck(checked);
                 }
 
             }
@@ -113,6 +113,7 @@ public class ShoppingCarAdapter extends RecyclerView.Adapter<ShoppingCarAdapter.
     }
 
     public interface ShoppingCarAdapterCallBack{
+        void notifyCheck(boolean isCheck);
         void notifySum();
     }
 

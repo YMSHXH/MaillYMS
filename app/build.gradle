@@ -38,7 +38,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //支付宝
+    // 添加下面的内容
+    //implementation (name: 'alipaySdk-15.6.0-20190226104104-noUtdid', ext: 'aar')
     implementation project(':lib_core')
+
 
     implementation 'com.android.support:multidex:1.0.3'
 
@@ -103,6 +107,11 @@ dependencies {
     //implementation 'com.zhihu.android:matisse:0.5.0-alpha4'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
     implementation "io.reactivex.rxjava2:rxjava:2.1.9"
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    //xedittext
+    implementation 'com.xw.repo:xedittext:2.1.0@aar'
 
 }
 

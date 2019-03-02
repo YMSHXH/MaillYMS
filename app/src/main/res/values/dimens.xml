@@ -422,7 +422,5 @@
     <dimen name="sp_40">40sp</dimen>
     <dimen name="sp_42">42sp</dimen>
     <dimen name="sp_48">48sp</dimen>
-</resources>
-    <!--<resources>-->
-    <!--&lt;!&ndash; Default screen margins, per the Android Design guidelines. &ndash;&gt;-->
-    <!--</resources>-->
+    <dimen name="fab_margin">16dp</dimen>
+</resources><!--<resources>--><!--&lt;!&ndash; Default screen margins, per the Android Design guidelines. &ndash;&gt;--><!--</resources>-->

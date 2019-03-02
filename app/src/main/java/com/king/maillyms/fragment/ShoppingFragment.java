@@ -60,18 +60,18 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
         shoppingCarAdapter.setShoppingCarAdapterCallBack(this);
 
         //进行全选.反选 设置
-        ckbQuan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ckbQuan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View v) {
+                boolean checked = ckbQuan.isChecked();
                 for (ShoppingCarBean shoppingCarBean : splist) {
-                    shoppingCarBean.setChedcked(isChecked);
+                    shoppingCarBean.setChedcked(checked);
                 }
                 //计算总和
                 sumPrice();
                 shoppingCarAdapter.notifyDataSetChanged();
             }
         });
-
     }
 
     /**
@@ -138,8 +138,27 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
         unbinder.unbind();
     }
 
+
+
     /**
-     * 适配器接口回调
+     * 适配器接口回调1
+     */
+    @Override
+    public void notifyCheck(boolean isCheck) {
+        boolean isAllCheck = true;
+        for (ShoppingCarBean shoppingCarBean : splist) {
+            if (shoppingCarBean.isChedcked()!=true){
+                ckbQuan.setChecked(false);
+                isAllCheck = false;
+            }
+        }
+        if (isAllCheck) {
+            ckbQuan.setChecked(isCheck);
+        }
+        sumPrice();
+    }
+    /**
+     * 适配器接口回调2
      */
     @Override
     public void notifySum() {

@@ -67,7 +67,7 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
     private void setOnClick() {
         information.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//信息
                 Intent intent = new Intent(getActivity(),MyDataActivity.class);
                 intent.putExtra("head",result.getHeadPic());
                 intent.putExtra("name",result.getNickName());
@@ -101,6 +101,7 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
                 startActivity(intent);
             }
         });
+
 
         head_image_simile.setOnClickListener(new View.OnClickListener() {
             @Override

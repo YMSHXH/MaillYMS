@@ -23,6 +23,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
+import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -108,14 +109,20 @@ public class MyDataActivity extends BaseMvpActivity<HeadImageContact.IHeadImageM
                             //加载图片
                             Matisse.from(MyDataActivity.this)
                                     .choose(MimeType.of(MimeType.JPEG, MimeType.PNG)) // 选择 mime 的类型
-                                    .countable(true)
                                     .maxSelectable(1) // 图片选择的最多数量
+                                    .countable(true)//是否显示选中数字
+                                    .capture(true)//是否提供拍照功能
+                                    .captureStrategy(new CaptureStrategy(true, "com.zhihu.matisse.sample.fileprovider"))//存储地址
+                                    .maxSelectable(9)//最大选择数
+                                    //.addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))//筛选条件
+                                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)//屏幕方向
                                     //.gridExpectedSize(getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
-                                    .gridExpectedSize(240)
+                                    .gridExpectedSize(240)//图片大小
                                     .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
                                     .thumbnailScale(0.85f) // 缩略图的比例
                                     .imageEngine(new GlideEngine()) // 使用的图片加载引擎
                                     .forResult(REQUEST_CODE_CHOOSE); // 设置作为标记的请求码
+
                         }
 
                     }

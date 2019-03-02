@@ -1,6 +1,8 @@
 package com.king.maillyms.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -38,10 +40,12 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressContact.IMyAddre
     RecyclerView myaddressXrecy;
     @BindView(R.id.myaddress_btn_add_address)
     Button myaddressBtnAddAddress;
+    private Map<String, String> params;
 
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        getSupportActionBar().hide();
 
         //设置 recycleView 的样式
         myaddressXrecy.setLayoutManager(new LinearLayoutManager(this));
@@ -51,7 +55,7 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressContact.IMyAddre
     protected void initData() {
         super.initData();
 
-        Map<String, String> params = new HashMap<>();
+        params = new HashMap<>();
         params.put("userId", ShapedP.getmInstance().getSP("userId"));
         params.put("sessionId", ShapedP.getmInstance().getSP("sessionId"));
         presenter.setMyAddressList(params);
@@ -99,15 +103,24 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressContact.IMyAddre
      * 点击数据
      * @param view
      */
-    @OnClick({R.id.myAddress_complete, R.id.myaddress_xrecy})
+    @OnClick({R.id.myAddress_complete, R.id.myaddress_btn_add_address})
     public void onClicked(View view) {
         switch (view.getId()) {
             case R.id.myAddress_complete://完成
                 finish();
                 break;
-            case R.id.myaddress_xrecy://跳转到添加
-
+            case R.id.myaddress_btn_add_address://跳转到添加
+                startActivityForResult(new Intent(this,AddMyAddressActivity.class),2000);
                 break;
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2000){
+            presenter.setMyAddressList(params);
         }
     }
 }

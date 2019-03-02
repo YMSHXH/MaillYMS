@@ -1,6 +1,7 @@
 package com.king.maillyms.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
+import com.king.maillyms.activity.UpdataMyActivity;
 import com.king.maillyms.beans.entity.MyAddressBean;
 
 import java.util.List;
@@ -40,10 +42,24 @@ public class MyAddressAdapter extends XRecyclerView.Adapter<MyAddressAdapter.MyA
 
     @Override
     public void onBindViewHolder(@NonNull MyAddressAdapterVH myAddressAdapterVH, int i) {
-        MyAddressBean myAddressBean = list.get(i);
+        final MyAddressBean myAddressBean = list.get(i);
         myAddressAdapterVH.myAddressName.setText(myAddressBean.getRealName());
         myAddressAdapterVH.myAddressPhone.setText(myAddressBean.getPhone());
         myAddressAdapterVH.myAddressAddress.setText(myAddressBean.getAddress());
+
+        myAddressAdapterVH.myAddressBtnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdataMyActivity.class);
+                intent.putExtra("id",myAddressBean.getId());
+                intent.putExtra("realName",myAddressBean.getRealName());
+                intent.putExtra("phone",myAddressBean.getPhone());
+                intent.putExtra("address",myAddressBean.getAddress());
+                intent.putExtra("zipCode",myAddressBean.getZipCode());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -51,15 +67,6 @@ public class MyAddressAdapter extends XRecyclerView.Adapter<MyAddressAdapter.MyA
         return list.size();
     }
 
-    @OnClick({R.id.my_address_btndel, R.id.my_address_btnupdate})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.my_address_btndel://删除
-                break;
-            case R.id.my_address_btnupdate://修改
-                break;
-        }
-    }
 
     public class MyAddressAdapterVH extends RecyclerView.ViewHolder {
         @BindView(R.id.my_address_name)

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/pay_img_yu"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:src="@mipmap/common_icon_money"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/pay_text_yu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_40"
+        android:text="余额支付"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#666666"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/pay_ckb_yu"
+        app:layout_constraintLeft_toRightOf="@+id/pay_img_yu"/>
+
+    <CheckBox
+        android:id="@+id/pay_ckb_yu"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/CustomCheckBoxTheme"
+        android:layout_marginRight="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_10"/>
+
+    <ImageView
+        android:id="@+id/pay_img_wei"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:src="@mipmap/common_icon_weixin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pay_img_yu"
+        app:layout_constraintBottom_toTopOf="@+id/pay_img_zhi"/>
+
+    <TextView
+        android:id="@+id/pay_text_wei"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_40"
+        android:text="微信支付"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#666666"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        app:layout_constraintRight_toLeftOf="@+id/pay_ckb_wei"
+        app:layout_constraintLeft_toRightOf="@+id/pay_img_wei"
+        app:layout_constraintTop_toBottomOf="@+id/pay_text_yu"
+        app:layout_constraintBottom_toTopOf="@+id/pay_text_zhi"/>
+
+    <CheckBox
+        android:id="@+id/pay_ckb_wei"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        style="@style/CustomCheckBoxTheme"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pay_ckb_yu"
+        app:layout_constraintBottom_toTopOf="@+id/pay_ckb_zhi"
+        android:layout_marginRight="@dimen/dp_14"/>
+
+    <ImageView
+        android:id="@+id/pay_img_zhi"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_20"
+        android:src="@mipmap/common_icon_zhifubao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/pay_text_zhi"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_40"
+        android:text="支付宝支付"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#666666"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        app:layout_constraintRight_toLeftOf="@+id/pay_ckb_wei"
+        app:layout_constraintLeft_toRightOf="@+id/pay_img_zhi"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/pay_ckb_zhi"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/CustomCheckBoxTheme"
+        android:layout_marginRight="@dimen/dp_14"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
