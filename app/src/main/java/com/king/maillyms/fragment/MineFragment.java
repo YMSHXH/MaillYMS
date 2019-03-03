@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.king.maillyms.R;
 import com.king.maillyms.activity.MyAddressActivity;
 import com.king.maillyms.activity.MyDataActivity;
+import com.king.maillyms.activity.MyMoneyActivity;
 import com.king.maillyms.beans.FindBean;
 import com.king.maillyms.contact.FindContact;
 import com.king.maillyms.presenter.FindPresenter;
@@ -90,7 +91,8 @@ public class MineFragment extends BaseMvpFragment<FindContact.IFindModel,FindCon
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(),MyMoneyActivity.class);
+                startActivity(intent);
             }
         });
         //收货地址

@@ -37,6 +37,7 @@ public class ProductApis {
     public static final String MY_ADDRESS = "small/user/verify/v1/receiveAddressList";
     public static final String ADD_MY_ADDRESS = "small/user/verify/v1/addReceiveAddress";
     public static final String UPADTA_MY_ADDRESS = "small/user/verify/v1/changeReceiveAddress";
+    public static final String SET_MY_ADDRESS = "small/user/verify/v1/setDefaultReceiveAddress";//默认地址
 
 
     /**

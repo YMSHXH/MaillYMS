@@ -1,5 +1,6 @@
 package com.king.maillyms.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -15,11 +16,14 @@ import com.example.lib_core.base.mvp.BasePresenter;
 import com.example.lib_core.utils.ShapedP;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.king.maillyms.R;
+import com.king.maillyms.activity.SumMoneyActivity;
 import com.king.maillyms.adapter.ShoppingCarAdapter;
 import com.king.maillyms.apis.ProductApis;
 import com.king.maillyms.beans.entity.ShoppingCarBean;
 import com.king.maillyms.contact.ShoppingCarContact;
 import com.king.maillyms.presenter.ShoppingCarPresenter;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,6 +74,24 @@ public class ShoppingFragment extends BaseMvpFragment<ShoppingCarContact.IShoppi
                 //计算总和
                 sumPrice();
                 shoppingCarAdapter.notifyDataSetChanged();
+            }
+        });
+
+        goPay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                List<ShoppingCarBean> tosumlist = new ArrayList<>();
+                //拿到数据
+                for (ShoppingCarBean shoppingCarBean : splist) {
+                    if (shoppingCarBean.isChedcked()){
+                        tosumlist.add(shoppingCarBean);
+                    }
+                }
+
+                EventBus.getDefault().postSticky(tosumlist);
+                Intent intent = new Intent(getActivity(),SumMoneyActivity.class);
+                startActivity(intent);
             }
         });
     }

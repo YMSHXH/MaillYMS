@@ -128,7 +128,6 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
 
             list = bannerBean.getResult();
             xbanner.setData(list,null);
-            //开启一屏多显魔蛇
             //xbanner.setIsClipChildrenMode(true);
             //xbanner.setScrollBarSize();
 //            Glide.with(getActivity())
@@ -160,9 +159,10 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
                             double imagewidth = resource.getWidth();
                             double imageheight = resource.getHeight();
                             width_height = imagewidth / imageheight;
-                            Log.e("宽高比",width_height + "");
+                            //Log.e("宽高比",width_height + "");
                             //获取高度
                             double height = width / width_height;
+                            Log.e("高度",height + "" );
                             //设置banner 的高度
                             xbanner.setLayoutParams(new ConstraintLayout.LayoutParams((int)width,(int)height));
                         }
@@ -176,19 +176,6 @@ public class HomeFragment extends BaseMvpFragment<ProductContact.IProductModel,P
 
                 }
             });
-
-            //设置xbanner跳转详情页面 没有ID 无法查看 后台数据不好
-//            xbanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(XBanner banner, Object model, View view, int position) {
-//                    Intent intent = new Intent(getActivity(),GoodsDetailsActivity.class);
-//                    intent.putExtra("commodityId",list.get(position));
-//                    startActivity(intent);
-//                }
-//            });
-
-
-
             recyclerView.addHeaderView(headview);
         }
     }

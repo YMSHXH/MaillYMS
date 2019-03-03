@@ -114,7 +114,9 @@
         <activity android:name=".activity.MyAddressActivity" />
         <activity android:name=".activity.ToPayActivity" />
         <activity android:name=".activity.AddMyAddressActivity" />
-        <activity android:name=".activity.UpdataMyActivity"></activity>
+        <activity android:name=".activity.UpdataMyActivity" />
+        <activity android:name=".activity.SumMoneyActivity" />
+        <activity android:name=".activity.MyMoneyActivity"></activity>
     </application>
 
 </manifest>

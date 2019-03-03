@@ -12,6 +12,12 @@ import com.example.lib_core.utils.ShapedP;
 import com.king.maillyms.R;
 import com.king.maillyms.contact.UpdateAddressContact;
 import com.king.maillyms.presenter.UpdateMyAddPresenter;
+import com.lljjcoder.Interface.OnCityItemClickListener;
+import com.lljjcoder.bean.CityBean;
+import com.lljjcoder.bean.DistrictBean;
+import com.lljjcoder.bean.ProvinceBean;
+import com.lljjcoder.citywheel.CityConfig;
+import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.xw.repo.XEditText;
 
 import java.util.HashMap;
@@ -39,11 +45,18 @@ public class UpdataMyActivity extends BaseMvpActivity<UpdateAddressContact.IUpda
     @BindView(R.id.address_new_btn)
     Button addressNewBtn;
     private String id;
+    private CityPickerView cityPickerView;
 
     @Override
     protected void initView() {
         getSupportActionBar().hide();
         ButterKnife.bind(this);
+        cityPickerView = new CityPickerView();
+        //预先加载仿iOS滚轮实现的全部数据
+        cityPickerView.init(this);
+        //添加默认的配置，不需要自己定义，当然也可以自定义相关熟悉，详细属性请看demo
+        CityConfig cityConfig = new CityConfig.Builder().build();
+        cityPickerView.setConfig(cityConfig);
 
     }
 
@@ -68,8 +81,20 @@ public class UpdataMyActivity extends BaseMvpActivity<UpdateAddressContact.IUpda
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.address_new_sj:
+                cityPickerView.setOnCityItemClickListener(new OnCityItemClickListener() {
+                    @Override
+                    public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+                        super.onSelected(province, city, district);
+                        addressNewAddress.setText(province + "-" + city + "-" + district);
+                        addressNewXx.setText(""+province +  city + district);
+                    }
 
-
+                    @Override
+                    public void onCancel() {
+                        super.onCancel();
+                    }
+                });
+                cityPickerView.showCityPicker();
                 break;
             case R.id.address_new_btn:
                 Map<String, String> params = new HashMap<>();
@@ -96,6 +121,7 @@ public class UpdataMyActivity extends BaseMvpActivity<UpdateAddressContact.IUpda
     public void onSeccess(String meg) {
         ToastUtils.showLong(meg);
 
+        finish();
     }
 
     @Override

@@ -113,6 +113,8 @@ dependencies {
     //xedittext
     implementation 'com.xw.repo:xedittext:2.1.0@aar'
 
+    //省市区
+    implementation 'liji.library.dev:citypickerview:4.1.0'
 }
 
 configurations.all {

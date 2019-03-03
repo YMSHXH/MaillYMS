@@ -70,8 +70,16 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressContact.IMyAddre
     public void onSuccess(List<MyAddressBean> list) {
         //Toast.makeText(this,list.size() + "",Toast.LENGTH_SHORT).show();
         //设置适配器
-        MyAddressAdapter myAddressAdapter = new MyAddressAdapter(this, list);
+        MyAddressAdapter myAddressAdapter = new MyAddressAdapter(this, list,params);
         myaddressXrecy.setAdapter(myAddressAdapter);
+        myAddressAdapter.setMyAddressAdapterVHCallBack(new MyAddressAdapter.MyAddressAdapterVHCallBack() {
+            @Override
+            public void toUpdateAdress(Bundle bundle) {
+                Intent intent = new Intent(MyAddressActivity.this, UpdataMyActivity.class);
+                intent.putExtras(bundle);
+                startActivityForResult(intent,2001);
+            }
+        });
     }
 
     @Override
@@ -120,6 +128,9 @@ public class MyAddressActivity extends BaseMvpActivity<MyAddressContact.IMyAddre
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2000){
+            presenter.setMyAddressList(params);
+        }
+        if (requestCode == 2001){
             presenter.setMyAddressList(params);
         }
     }
