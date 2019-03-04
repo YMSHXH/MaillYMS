@@ -43,5 +43,13 @@ public class ProductApis {
     /**
      * 根据订单状态查询订单信息
      */
-    public static final String DAN_LIST = "small/order/verify/v1/findOrderListByStatus";
+    public static final String CREATE_DAN = "small/order/verify/v1/createOrder";//创建
+    public static final String DAN_LIST = "small/order/verify/v1/findOrderListByStatus";//查询
+    public static final String DELETE_LIST = "small/order/verify/v1/deleteOrder";//删除
+
+    public static final String TO_PAY = "small/order/verify/v1/pay";//支付
+
+
+
+
 }

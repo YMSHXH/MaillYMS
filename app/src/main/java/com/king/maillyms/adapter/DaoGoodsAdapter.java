@@ -41,7 +41,7 @@ public class DaoGoodsAdapter extends RecyclerView.Adapter<DaoGoodsAdapter.DaoGoo
         DanBean.OrderListBean.DetailListBean detailListBean = detailList.get(i);
 
         daoGoodsAdapterVH.oneTitle.setText(detailListBean.getCommodityName());
-        daoGoodsAdapterVH.onePrice.setText(detailListBean.getCommodityPrice());
+        daoGoodsAdapterVH.onePrice.setText("￥："+detailListBean.getCommodityPrice());
 
         //加载图片
         String commodityPic = detailListBean.getCommodityPic();

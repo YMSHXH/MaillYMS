@@ -43,9 +43,7 @@ public class MyMoneyAdapter extends RecyclerView.Adapter<MyMoneyAdapter.MyMoneyA
         long createTime = detailListBean.getCreateTime();
         Date date = new Date();
         date.setTime(createTime);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String fmDate=simpleDateFormat.format(date);
-        myMoneyAdapterVH.createTime.setText(fmDate);
+        myMoneyAdapterVH.createTime.setText(date+"");
     }
 
     @Override

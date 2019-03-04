@@ -118,6 +118,9 @@ public class DanFragment extends BaseMvpFragment<DanListContact.IDanListModel,Da
     @Override
     public void onSuccess(List<DanBean.OrderListBean> list) {
         //Toast.makeText(getActivity(),"根据订单状态查询订单信息==" + list.size(),Toast.LENGTH_SHORT).show();
+        for (DanBean.OrderListBean orderListBean : list) {
+            System.out.println(orderListBean.getOrderId());//查询订单号
+        }
         danAdapter.setList(list);
     }
 
